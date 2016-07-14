@@ -1,0 +1,58 @@
+body {
+    background-image: url("../images/pattern.png");
+    background-repeat: repeat-y;
+    padding: 50px;
+}
+
+.name{
+
+
+	color: blue;
+
+}
+
+img{
+	float: left;
+	display: inline;
+	width: 150px;
+	height: 150px;
+	margin-right:20px;
+}
+
+.score{
+	text-align: center;
+	width: 150px;
+	height: 150px;
+	background-color: silver;
+	float: left;
+	color: blue;
+	
+	margin-left: 20px;
+}
+
+#picContainer{
+
+		height: 175px;
+}
+
+.jumpotron{
+
+	height: 200px;
+}
+
+#resetGame{
+
+	margin-bottom: 10px;
+}
+
+#yourNumber{
+
+	font-size: 25px;
+	color: red;
+
+}
+
+#number{
+	font-size: 25px;
+}
+

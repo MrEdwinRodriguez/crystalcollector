@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+   Crystal Collector Game
+  </title>
+  <link type="text/css" rel="stylesheet" href="assets\css\style.css"/>
+  
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+</head>
+
+
+<body>
+<!-- header showing the name of the project -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    
+                    <div class="intro-text">
+                        <span class="name"><h1>Crystal Collector</h1></span>	
+                        <span class="name"><h4>Superhero Edition</h4></span>
+                        <hr class="star-light">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Jumbotron that will display the scores and the images -->
+<div class="jumbotron">
+  <div class="container" id="picContainer">
+    	
+
+
+    	<p>Click on a Superhereo</p>
+ 
+
+  	<div id="shPic">
+  <div id="pics"></div>
+
+  	<div id="random" class="score">
+  		<h4>Winning Number:</h4>
+  		<p><span id="number"></span></p>
+  	</div>
+		<div id="total" class="score">
+		<h4>Your Number:</h4>
+		<span id="yourNumber"></span></p>
+		</div>
+
+
+
+</div>
+		
+		
+
+  </div>
+</div>
+
+				<!-- Resets game -->
+<h3>Rules:</h3>  <button onclick="myFunction()" id="resetGame">Play Again.</button> 
+<div id = 'rules'>
+	<p>You will be given a random number to start the game.</p>
+	<p>There are four superheroes below.  Each superhereo will add a specific amount of points to your total score when you click on them.</p>
+	<p>You win the game by matching your total to the random number.  You lose if your total points goes over the random number.</p>
+	<p>The value of each superhereo is unkown until your click on it.</p>
+	<p>Each time that the game starts, the superhereo's values will change.</p>
+
+</div>
+
+<!-- jquery begins -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script type="text/javascript">
+
+  $( document ).ready(function() {
+
+  		// random number generator from 40 to 140
+  		var numberToGuess = Math.floor((Math.random() * 100) + 40);
+
+  		var counter = 0;
+
+  		;var numbers = [3, 4, 7, 10];
+  		
+  		// makes the number array random
+  		function shuffle(a) {
+        	var j, x, i;
+        	for (i = a.length; i; i--) {
+            j = Math.floor(Math.random() * i);
+            x = a[i - 1];
+            a[i - 1] = a[j];
+            a[j] = x;
+        }
+    } 
+
+  
+
+
+
+
+
+
+    shuffle(numbers);
+    console.log(numbers);
+  
+    	// images in array followed by making the array random
+  		var pictures = ["batman.jpg", "superman.jpg", "hulk.jpg", "ironman.jpg"];
+  		shuffle(pictures);
+    	console.log(pictures);
+
+
+
+  		// assigns value to images
+  		$('#number').text(numberToGuess);
+
+  		for ( var i =0; i < numbers.length; i++){
+
+  			var imageCrystal = $('<img>');
+
+  			imageCrystal.attr('data-num', numbers[i]);
+
+  			imageCrystal.attr('src', 'assets/images/'+pictures[i]);
+
+  			imageCrystal.attr('alt', 'crytals');
+
+  			imageCrystal.addClass('pics');
+
+  			$('#pics').append(imageCrystal);
+
+  		}
+  		
+
+	   $('.pics').on('click', function(){
+
+	   	// updates the user count
+	   	counter = counter + parseInt($(this).data('num'));
+	  
+
+      	 $('#yourNumber').text(counter);
+
+      	 // determines win or loss
+      	if (counter == numberToGuess){
+        alert('You won!!!!');
+      }
+      else if( counter > numberToGuess){
+      	alert('You lost!');
+      }
+    });
+  });
+
+// reload game function
+function myFunction() {
+    location.reload();
+}
+
+
+
+</script>
+
+
+</body>
+
+</html>
